@@ -1,0 +1,19 @@
+<div class="edit-task-container">
+    <h2>Edit Task</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group" *ngIf="task">
+        <label for="title">Title</label>
+        <input type="text" id="title" [(ngModel)]="task.title" name="title" required />
+      </div>
+      <div class="form-group" *ngIf="task">
+        <label for="description">Description</label>
+        <textarea id="description" [(ngModel)]="task.description" name="description" required></textarea>
+      </div>
+      <div class="form-group" *ngIf="task">
+        <label for="dueDate">Due Date</label>
+        <input type="date" id="dueDate" [(ngModel)]="task.dueDate" name="dueDate" required />
+      </div>
+      <button type="submit" [disabled]="!task?.title || !task?.description || !task?.dueDate">Update Task</button>
+    </form>
+  </div>
+  

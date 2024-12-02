@@ -1,6 +1,17 @@
 <div class="home-container">
-    <h2>Welcome, User!</h2>
-    <button (click)="onCreateTask()">Create Task</button>
+    <!-- Logout Button -->
+    <button (click)="onLogout()">Logout</button>
+  
+    <h2>Welcome, To your Task Manager!</h2>
+  
+    <!-- New Task Form -->
+    <div>
+      <h3>Create Task</h3>
+      <input [(ngModel)]="newTaskModel.title" placeholder="Title" />
+      <input [(ngModel)]="newTaskModel.description" placeholder="Description" />
+      <input [(ngModel)]="newTaskModel.dueDate" type="date" />
+      <button (click)="createTask()">Add Task</button>
+    </div>
   
     <h3>Your Tasks</h3>
     <table>
@@ -14,7 +25,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let task of tasks | orderBy: 'dueDate'">
+        <tr *ngFor="let task of tasks">
           <td>{{ task.title }}</td>
           <td>{{ task.description }}</td>
           <td>{{ task.dueDate | date }}</td>
@@ -24,11 +35,18 @@
             </button>
           </td>
           <td>
-            <button (click)="editTask(task)">Edit</button>
-            <button (click)="deleteTask(task.id)">Delete</button>
+            <button (click)="editTask(task)" style="background-color: orange;">Edit</button>
+            <button (click)="deleteTask(task.id)" style="background-color: red;">Delete</button>
           </td>
         </tr>
       </tbody>
     </table>
+    <div *ngIf="editTaskModel.id">
+        <h3>Edit Task</h3>
+        <input [(ngModel)]="editTaskModel.title" placeholder="Title" />
+        <input [(ngModel)]="editTaskModel.description" placeholder="Description" />
+        <input [(ngModel)]="editTaskModel.dueDate" type="date" />
+        <button (click)="saveTask()">Save Changes</button>
+      </div>
   </div>
   

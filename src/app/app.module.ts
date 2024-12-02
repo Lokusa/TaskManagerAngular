@@ -10,13 +10,17 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { OrderByPipe } from './order-by.pipe';
 import { AuthInterceptor } from './auth.interceptor';
+import { CreateTaskComponent } from './create-task/create-task.component';
+import { EditTaskComponent } from './edit-task/edit-task.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    OrderByPipe
+    OrderByPipe,
+    CreateTaskComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,
